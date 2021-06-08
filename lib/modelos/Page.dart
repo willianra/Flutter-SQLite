@@ -1,26 +1,26 @@
 import 'package:flutter_sqlite/BaseDatos/CRUD.dart';
 import 'package:flutter_sqlite/BaseDatos/tabla.dart';
 
-class Page extends CRUD{
+class Pages extends CRUD{
   int id;
   String date;
   String title;
   String content;
   int idDiary;
 
-  Page({this.id,this.date="",this.title="",this.content="",this.idDiary=0}):super (DBTable.PAGE);
+  Pages({this.id,this.date="",this.title="",this.content="",this.idDiary=0}):super (DBTable.PAGE);
 
   //de map a objet
-  factory Page.toObjet(Map<dynamic,dynamic>data){
+  factory Pages.toObjet(Map<dynamic,dynamic>data){
 
-    return (data!=null)?Page(
+    return (data!=null)?Pages(
       //clave valor
       id:data['id'],
       date: data['date'],
       title: data['title'],
       content: data['content'],
       idDiary: data['idDiary'],
-    ):Page();
+    ):Pages();
   }
   Map<String,dynamic>toMap(){
     return {
@@ -33,6 +33,6 @@ class Page extends CRUD{
   }
   
   getList(parsed){
-    return (parsed as List).map((map) => Page.toObjet(map)).toList();
+    return (parsed as List).map((map) => Pages.toObjet(map)).toList();
   }
 }

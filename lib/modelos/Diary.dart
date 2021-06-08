@@ -29,4 +29,15 @@ class Diary extends CRUD{
   getList(parsed){
     return (parsed as List).map((map) => Diary.toObjet(map)).toList();
   }
+  save() async{
+   this.id = await insert(this.toMap());
+   return (this.id>0)?this:null;
+  }
+  Future<List<Diary>>getDiaries()async{
+    var resul=query("SELECT * FROM ${DBTable.DIARY}");
+    return getList(resul);
+  }
+  checkEnterCode(){
+    //var result=await query("SELECT * FROM ${DBTable.DIARY} WHERE id=? AND enterCode?",arguments: )
+  }
 }

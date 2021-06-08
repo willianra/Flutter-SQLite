@@ -8,7 +8,8 @@ abstract class CRUD{
 Future<Database> get database async{
     return await  DB().open();
   }
-query(String sql,List<dynamic>arguments)async{
+  ///{ opcional}
+query(String sql,{List<dynamic>arguments})async{
   final db=await database;
   //db.query(table);
   return await db.rawQuery(sql,arguments);
@@ -27,5 +28,7 @@ delete(int id)async{
   final db =  await  database;
   return await db.delete(table,where: "id=?",whereArgs: [id]);
 }
+//LISTA DE MAPAS
+ 
  
 }
